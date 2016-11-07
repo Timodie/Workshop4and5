@@ -1,20 +1,22 @@
 import React from 'react';
-import CommentEntry from './commententry';
-    export default class CommentThread extends React.Component {
-      render() {
-        return (
-          <ul className="media-list">
-          {React.Children.map(this.props.children, function(child) {
-            return (
-              <li className="media">
-              {child}
-              </li>
-            )
-            })}
+import CommentEntry from './commentEntry';
+
+export default class CommentThread extends React.Component{
+
+  render(){
+    return(
+      <ul className="media-list">
+        {React.Children.map(this.props.children, function(child) {
+          return (
             <li className="media">
-            <CommentEntry />
+              {child}
             </li>
-            </ul>
           )
-        }
-      }
+        })}
+        <li className="media">
+          <CommentEntry onPost={this.props.onPost}/>
+        </li>
+      </ul>
+    );
+  }
+}
